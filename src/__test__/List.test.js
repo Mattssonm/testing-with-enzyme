@@ -40,8 +40,8 @@ describe('List test suite', () => {
 
   it('changes textInput state on input change', () => {
     let wrapper = shallow(<List />);
-    wrapper.find('input').simulate('change', {target: {value: "This is test example is even better"}});
-    expect(wrapper.state('textInput')).toBe("This is test example is even better")
+    wrapper.find('input').simulate('change', {target: {value: "This test example is even better"}});
+    expect(wrapper.state('textInput')).toBe("This test example is even better")
   });
 
   it('renders listedInputs correctly', () => {
