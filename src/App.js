@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import List from './List.js';
 
 class App extends Component {
 
@@ -6,6 +7,7 @@ class App extends Component {
     return (
       <div>
         <h1>Lab 35</h1>
+        <List />
       </div>
     );
   }

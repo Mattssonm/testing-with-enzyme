@@ -1,11 +1,37 @@
 import React, { Component } from 'react';
 
 class List extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      textInput: "",
+      listedInputs: []
+    }
+  }
+
+  handleInputChange = event => {
+    this.setState({
+      textInput: event.target.value
+    })
+  }
+
+  handleClick = event => {
+    this.setState(prevState => ({
+      listedInputs: [...prevState.listedInputs, this.state.textInput]
+    }));
+  }
 
   render() {
+    const makeListIntoLis = this.state.listedInputs.map((input, index) =>
+      <li key={"makeListIntoLis" + input + index}>{input}</li>
+    );
+
     return (
       <div>
         <h3>List</h3>
+        <ul>{makeListIntoLis}</ul>
+        <input type="text" placeholder="Write some text" onChange={this.handleInputChange}/>
+        <button className="addText" onClick={this.handleClick}>Add Text</button>
       </div>
     );
   }
