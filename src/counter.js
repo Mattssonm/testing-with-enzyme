@@ -11,35 +11,36 @@ class Counter extends Component {
     }
 
 
-handleClickIncrease = event => {
+handleClickIncrease = () => {
     console.log('Increase clicked');
     this.setState({
         value: this.state.value +1,
     })
 }
-handleClickDecrease = event => {
+handleClickDecrease = () => {
     console.log('Decrease click')
     this.setState({
         value: this.state.value -1,
     })
 }
 
-handleChange = event => {
+handleChange = (event) => {
     let inputValue = Number(event.target.value);
-    if(inputValue !== isNaN){
+    isNaN(inputValue);
+    if(!inputValue){
+        console.log('not a valid number')
+    } else {
         this.setState({
             value: inputValue,
         })
-    } else {
-        this.setState({
-            value: this.state.value,
-        })
+        
     }
 }
 	render() {
 		return (
 			<div>
-				Value is: {this.state.value}<br/>
+                <div>
+				Value is: {this.state.value}</div><br/>
                 <input placeholder="Enter a number" onChange={this.handleChange}/>
                 <br />
 				<button onClick={this.handleClickIncrease}>Increase</button>
