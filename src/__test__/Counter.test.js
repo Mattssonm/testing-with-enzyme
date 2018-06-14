@@ -56,5 +56,17 @@ describe('Counter test suite', () => {
     inputField.simulate('change', { target: { value: 'Glad Sommar' } })
     expect(wrapper.state('value')).toBe(0)
   })
+  it(' works when user inputs negative numbers', () => {
+    let wrapper = shallow(<Counter />);
+    const inputField = wrapper.find('input').at(0)
+    inputField.simulate('change', { target: { value: -1 } })
+    expect(wrapper.state('value')).toBe(-1)
+  })
+  it(' works when user inputs gets undefined', () => {
+    let wrapper = shallow(<Counter />);
+    const inputField = wrapper.find('input').at(0)
+    inputField.simulate('change', { target: { value: undefined } })
+    expect(wrapper.state('value')).toBe(0)
+  })
 
 });
