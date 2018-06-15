@@ -47,13 +47,16 @@ describe('List test suite', () => {
   it('renders listedInputs correctly', () => {
     let wrapper = shallow(<List />);
     wrapper.setState({ listedInputs: ["Chocolate", "Biscuits", "Strawberries"] });
-    const list = (
-      <ul>
-        <li>Chocolate</li>
-        <li>Biscuits</li>
-        <li>Strawberries</li>
-      </ul>
-    );
-    expect(wrapper.contains(list)).toBe(true);
+    expect(wrapper.find("li").length).toBe(3);
+    wrapper.setState({ listedInputs: ["Chocolate", "Biscuits", "Strawberries", "Chocolate", "Biscuits", "Strawberries"] });
+    expect(wrapper.find("li").length).toBe(6);
+  });
+
+  it('removes the input correctly when remove button is clicked', () => {
+    let wrapper = shallow(<List />);
+    wrapper.setState({ listedInputs: ["Candy", "Crackers", "Blueberries"] });
+    const rmvCandyBtn = wrapper.find("button").at(0);
+    rmvCandyBtn.simulate("click");
+    expect(wrapper.state("listedInputs")).toEqual(["Crackers", "Blueberries"])
   });
 });

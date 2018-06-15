@@ -21,10 +21,25 @@ class List extends Component {
     }));
   }
 
+  handleRemoveBtn = index => {
+    this.setState(prevState => ({
+      listedInputs: [
+        ...prevState.listedInputs.slice(0, index),
+        ...prevState.listedInputs.slice(index + 1)
+      ]
+    }));
+  }
+
   render() {
-    const makeListIntoLis = this.state.listedInputs.map((input, index) =>
-      <li key={"makeListIntoLis" + input + index}>{input}</li>
-    );
+    const makeListIntoLis = this.state.listedInputs.map((input, index) => {
+      let key = "makeListIntoLis" + input + index;
+      return (
+        <li key={key}>
+          <span>{input}</span>
+          <button onClick={() => this.handleRemoveBtn(index)}>Remove</button>
+        </li>
+      )
+    });
 
     return (
       <div>
