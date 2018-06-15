@@ -14,19 +14,28 @@ class Transformers extends Component {
         raiseTo: '',
     }
 
-handleChange = (event) => {
-   // let reversed = [...event.target.value].reverse().join('')
+handleChange = event => {
+    let inputValue = event.target.value;
     let reversed = '';
-    let lenghtreversed = event.target.value;
-    reversed = event.target.value.split('').reverse().join('')
-    let capitalized = event.target.value.toUpperCase();
-    let raiseTo = Number(event.target.value);
-    isNaN(raiseTo);
+    let capitalized = inputValue.toUpperCase();
+    let raiseTo = Number(inputValue)
+    
+    for (var i = inputValue.length - 1; i >= 0; i--) { 
+        reversed += inputValue[i]; 
+    }
 
     raiseTo = raiseTo*raiseTo;
+    
 
-
-    if(!raiseTo){
+    if(inputValue === ''){
+        this.setState({
+            reversed: '',
+            capitalized: '',
+            raiseTo: '',
+        })
+    }
+    if(isNaN(raiseTo)){
+ 
         this.setState({
             reversed,
             capitalized
@@ -41,7 +50,7 @@ handleChange = (event) => {
 	render() {
 		return (
 			<div>
-                <input placeholder="Enter a number" onChange={this.handleChange}/>	
+                <input placeholder="Enter a text or a number" onChange={this.handleChange}/>	
                 <div>
 				reversed: {this.state.reversed}</div><br/>
                 <div>

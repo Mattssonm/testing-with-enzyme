@@ -14,69 +14,31 @@ describe('Transformers test suite', () => {
         const counterInput = wrapper.find('input').at(0).length;
         expect(counterInput).toBe(1)
     });
-    it(' works to reverse', () => {
+    it(' works to reverse a string input', () => {
         let wrapper = shallow(<Transformers />);
         const inputField = wrapper.find('input').at(0)
-        inputField.simulate('change', { target: { reversed: 'Hello' } })
+        inputField.simulate('change', { target: { value: 'Hello' } })
         expect(wrapper.state('reversed')).toBe('olleH')
-    })
-    it(' works to capitalize', () => {
+    });
+    it(' works to capitalize a string input', () => {
         let wrapper = shallow(<Transformers />);
         const inputField = wrapper.find('input').at(0)
-        inputField.simulate('change', { target: { capitalized: 'sommarlov' } })
-        expect(wrapper.state('reversed')).toBe('SOMMARLOV')
-    })
-    it(' works to multiply with itself', () => {
+        inputField.simulate('change', { target: { value: 'sommarlov' } })
+        expect(wrapper.state('capitalized')).toBe('SOMMARLOV')
+    });
+    it(' works to multiply number with itself', () => {
         let wrapper = shallow(<Transformers />);
         const inputField = wrapper.find('input').at(0)
-        inputField.simulate('change', { target: { raiseTo: 4 } })
-        expect(wrapper.state('reversed')).toBe(16)
+        inputField.simulate('change', { target: { value: '4' } })
+        expect(wrapper.state('raiseTo')).toBe(16)
     })
+    it(' returns states to empty values', () => {
+      let wrapper = shallow(<Transformers />);
+      const inputField = wrapper.find('input').at(0)
+      inputField.simulate('change', { target: { value: '' } })
+      expect(wrapper.state('raiseTo')).toBe(0)
+      expect(wrapper.state('reversed')).toBe('')
+      expect(wrapper.state('capitalized')).toBe('')
+  })
 });
-  /*
   
-  it(' should update the value by 1', () => {
-    const wrapper = shallow(<Counter />);
-    const instance = wrapper.instance();
-    expect(wrapper.state('value')).toBe(0);
-    instance.handleClickIncrease();
-    expect(wrapper.state('value')).toBe(1);
-  });
-  it(' should decrease the value by 1', () => {
-    const wrapper = shallow(<Counter />);
-    const instance = wrapper.instance();
-    expect(wrapper.state('value')).toBe(0);
-    instance.handleClickDecrease();
-    expect(wrapper.state('value')).toBe(-1);
-  });
-  it(' works when user inputs number', () => {
-    let wrapper = shallow(<Counter />);
-    const input = wrapper.find('input').at(0)
-    input.simulate('change', { target: { value: 3 } })
-    expect(wrapper.state('value')).toBe(3)
-  })
-  it(' works when user inputs string and converts it to number', () => {
-    let wrapper = shallow(<Counter />);
-    const input = wrapper.find('input').at(0)
-    input.simulate('change', { target: { value: '52' } })
-    expect(wrapper.state('value')).toBe(52)
-  })
-  it(' works when user inputs invalid string', () => {
-    let wrapper = shallow(<Counter />);
-    const inputField = wrapper.find('input').at(0)
-    inputField.simulate('change', { target: { value: 'Glad Sommar' } })
-    expect(wrapper.state('value')).toBe(0)
-  })
-  it(' works when user inputs negative numbers', () => {
-    let wrapper = shallow(<Counter />);
-    const inputField = wrapper.find('input').at(0)
-    inputField.simulate('change', { target: { value: -1 } })
-    expect(wrapper.state('value')).toBe(-1)
-  })
-  it(' works when user inputs gets undefined', () => {
-    let wrapper = shallow(<Counter />);
-    const inputField = wrapper.find('input').at(0)
-    inputField.simulate('change', { target: { value: undefined } })
-    expect(wrapper.state('value')).toBe(0)
-  })*/
-
