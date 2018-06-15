@@ -1,1 +1,25 @@
 
+Koden vi har jämfört med är Albins på https://github.com/aengman/Lab_35_react_test
+
+Rapporten
+Gå igenom den andra gruppens kod för varje uppgift och svara på följande frågor.
+Har ni testat samma saker?
+Vilka är de viktigaste testfallen? Varför är de viktiga?
+Finns det några onödiga testfall i deras kod? Varför är de onödiga?
+
+
+ListComponent
+
+1. Testfallen är identiska med olika tekniker. Båda har testa så att komponent renderas korrekt och även testat så att input renderas. Båda har även testat så att input från användaren är korrekt.
+2. De viktigaste är att testa så att faktiskt koden renderas samt att outputen från inparametrar är korrekta. 
+3. Det finns några onödiga testfall i deras kod som testar olika inparametrar på en input alltid generar en string. 
+
+Counter
+1. Båda har renderingstester på knappar och input fast deras kod innehåller även test för renderingen av display av outputen. Utöver dettqa så har båda testat olika typer av inparametrar samt simulering av change event på inputen.
+2. Det viktigaste har testats för att veta om koden renderas samt att korrekta värden visas efter input av användaren.
+3. Vi kunde inte hitta några onödiga testfall i deras kod.
+
+Transformering
+1. Båda har testfall som täcker ifall inparametrarna får den output states visar. Skillnaden är att rendering av inputfältet saknas i deras kod samt att de testar initial staten i deras kod.
+2. Det viktigaste är att testfallen kollar ifall om det som användaren har skrivit inputfältet faktiskt genererar den output som states får.
+3. Vi kunde inte hitta några onödiga testfall i deras kod.
